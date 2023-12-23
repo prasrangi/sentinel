@@ -89,7 +89,7 @@
                                                     "inputs": {
                                                         "body": {
                                                             "incidentArmId": "@triggerBody()?['object']?['id']",
-                                                            "message": "<p>User @{items('For_each')?['Name']} (UPN - @{concat(items('For_each')?['Name'], '@', items('for_each')?['UPNSuffix'])}) was disabled in AAD via playbook Block-AADUser. Manager (@{body('Parse_JSON_-_get_user_manager')?['userPrincipalName']}) is notified.</p>"
+                                                            "message": "\u003cp\u003eUser @{items('For_each')?['Name']} (UPN - @{concat(items('For_each')?['Name'], '@', items('for_each')?['UPNSuffix'])}) was disabled in AAD via playbook Block-AADUser. Manager (@{body('Parse_JSON_-_get_user_manager')?['userPrincipalName']}) is notified.\u003c/p\u003e"
                                                         },
                                                         "host": {
                                                             "connection": {
@@ -121,7 +121,7 @@
                                                     "type": "ApiConnection",
                                                     "inputs": {
                                                         "body": {
-                                                            "Body": "<p>Security notification! This is automated email sent by Microsoft Sentinel Automation!<br>\n<br>\nYour direct report @{items('For_each')?['Name']} has been disabled in Azure AD due to the security incident. Can you please notify the user and work with him to reach&nbsp;our support.<br>\n<br>\nDirect report details:<br>\nFirst name: @{body('Get_user_-_details')?['displayName']}<br>\nSurname: @{body('Get_user_-_details')?['surname']}<br>\nJob title: @{body('Get_user_-_details')?['jobTitle']}<br>\nOffice location: @{body('Get_user_-_details')?['officeLocation']}<br>\nBusiness phone: @{body('Get_user_-_details')?['businessPhones']}<br>\nMobile phone: @{body('Get_user_-_details')?['mobilePhone']}<br>\nMail: @{body('Get_user_-_details')?['mail']}<br>\n<br>\nThank you!</p>",
+                                                            "Body": "\u003cp\u003eSecurity notification! This is automated email sent by Microsoft Sentinel Automation!\u003cbr\u003e\n\u003cbr\u003e\nYour direct report @{items('For_each')?['Name']} has been disabled in Azure AD due to the security incident. Can you please notify the user and work with him to reach\u0026nbsp;our support.\u003cbr\u003e\n\u003cbr\u003e\nDirect report details:\u003cbr\u003e\nFirst name: @{body('Get_user_-_details')?['displayName']}\u003cbr\u003e\nSurname: @{body('Get_user_-_details')?['surname']}\u003cbr\u003e\nJob title: @{body('Get_user_-_details')?['jobTitle']}\u003cbr\u003e\nOffice location: @{body('Get_user_-_details')?['officeLocation']}\u003cbr\u003e\nBusiness phone: @{body('Get_user_-_details')?['businessPhones']}\u003cbr\u003e\nMobile phone: @{body('Get_user_-_details')?['mobilePhone']}\u003cbr\u003e\nMail: @{body('Get_user_-_details')?['mail']}\u003cbr\u003e\n\u003cbr\u003e\nThank you!\u003c/p\u003e",
                                                             "Importance": "High",
                                                             "Subject": "@{items('For_each')?['Name']}  has been disabled in Azure AD due to the security risk!",
                                                             "To": "@body('Parse_JSON_-_get_user_manager')?['userPrincipalName']"
@@ -148,7 +148,7 @@
                                                         "inputs": {
                                                             "body": {
                                                                 "incidentArmId": "@triggerBody()?['object']?['id']",
-                                                                "message": "<p>User @{items('For_each')?['Name']} (UPN - @{concat(items('For_each')?['Name'], '@', items('for_each')?['UPNSuffix'])}) was disabled in AAD via playbook Block-AADUser. Manager has not been notified, since it is not found for this user!</p>"
+                                                                "message": "\u003cp\u003eUser @{items('For_each')?['Name']} (UPN - @{concat(items('For_each')?['Name'], '@', items('for_each')?['UPNSuffix'])}) was disabled in AAD via playbook Block-AADUser. Manager has not been notified, since it is not found for this user!\u003c/p\u003e"
                                                             },
                                                             "host": {
                                                                 "connection": {
@@ -220,7 +220,7 @@
                                                 "inputs": {
                                                     "body": {
                                                         "incidentArmId": "@triggerBody()?['object']?['id']",
-                                                        "message": "<p>Block-AADUser playbook could not disable user @{items('For_each')?['Name']}.<br>\nError message: @{body('Update_user_-_disable_user')['error']['message']}<br>\nNote: If user is admin, this playbook don't have privilages to block admin users!</p>"
+                                                        "message": "\u003cp\u003eBlock-AADUser playbook could not disable user @{items('For_each')?['Name']}.\u003cbr\u003e\nError message: @{body('Update_user_-_disable_user')['error']['message']}\u003cbr\u003e\nNote: If user is admin, this playbook don't have privilages to block admin users!\u003c/p\u003e"
                                                     },
                                                     "host": {
                                                         "connection": {
@@ -281,7 +281,7 @@
                             "microsoftsentinel": {
                                 "connectionId": "[resourceId('Microsoft.Web/connections', variables('MicrosoftsentinelConnectionName'))]",
                                 "connectionName": "[variables('MicrosoftsentinelConnectionName')]",
-                                "id": "[concat('/subscriptions/', subscription().subscriptionId, '/providers/Microsoft.Web/locations/', resourceGroup().location, '/managedApis/Azuresentinel')]",
+                                "id": "[concat('/subscriptions/', subscription().subscriptionId, '/providers/Microsoft.Web/locations/', resourceGroup().location, '/managedApis/Microsoftsentinel')]",
                                 "connectionProperties": {
                                     "authentication": {
                                         "type": "ManagedServiceIdentity"
@@ -341,7 +341,7 @@
                 "customParameterValues": {},
                 "parameterValueType": "Alternative",
                 "api": {
-                    "id": "[concat('/subscriptions/', subscription().subscriptionId, '/providers/Microsoft.Web/locations/', resourceGroup().location, '/managedApis/Azuresentinel')]"
+                    "id": "[concat('/subscriptions/', subscription().subscriptionId, '/providers/Microsoft.Web/locations/', resourceGroup().location, '/managedApis/Microsoftsentinel')]"
                 }
             }
         },
